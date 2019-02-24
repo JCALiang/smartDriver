@@ -1,0 +1,36 @@
+{
+	"a":{
+		"pos":{
+			"top": [3,0],
+			"botm": [3,1]
+
+			},
+		"orient": "vertical"
+	},
+
+	"b":{
+		"pos":{
+			"top": [0,5],
+			"mid": [1,5],
+			"botm": [2,5]
+			},
+		"orient": "horizontal"
+	},
+
+	"c":{
+		"pos":{
+			"top": [5,4],
+			"botm": [5,5]
+			},
+		"orient": "vertical"
+	},
+
+	"d":{
+		"pos":{
+			"top": [0,0],
+			"botm": [1,0]
+			},
+		"orient": "vertical"
+	}
+				
+}

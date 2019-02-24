@@ -1,0 +1,19 @@
+.tile {
+	width: 60px;
+	height: 60px;
+	border: 2px solid gray;
+	background-color: lightgray;
+	/*background-image: url('https://s3.amazonaws.com/spoonflower/public/design_thumbnails/0165/3928/rrrdiagonal_stripe_ed_shop_preview.png');
+	*/
+}
+
+
+.exit{
+	width: 60px;
+	height: 60px;
+	display: flex;
+	justify-content: center; /* align horizontal */
+	align-items: center; /* align vertical */
+
+}
+
