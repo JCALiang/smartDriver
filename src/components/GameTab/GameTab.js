@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink,  Container} from 'reactstrap';
 import Games from './Games/Games';
-import classnames from 'classnames';
-import classes from './Tab.css';
-
 
 
 export default class LevelTab extends Component {
@@ -37,7 +34,7 @@ export default class LevelTab extends Component {
       navItems.push(
             <NavItem key={i} style={{backgroundColor: levelColor[i]}}>
             <NavLink style={{backgroundColor: levelColor[i]}}
-              className={classnames({ active: this.state.activeTab === String(i) })}
+             
               onClick={() => { this.toggle(String(i)); }}
             >
               {levels[i-1]}

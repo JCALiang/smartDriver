@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve" width="500px" height="500px">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve" width="100px" height="100px">
 <g>
 	<g>
-		<circle style="fill:#F1BC19;" cx="78" cy="14" r="1"/>
-		<circle style="fill:#FCE0A2;" cx="50" cy="50" r="38"/>
+		<circle style="fill:yellow;" cx="78" cy="14" r="1"/>
+		<circle style="fill:pink;" cx="50" cy="50" r="38"/>
 		<circle style="fill:#F1BC19;" cx="84" cy="16" r="4"/>
 		<circle style="fill:#EE3E54;" cx="14" cy="26" r="2"/>
 		<circle style="fill:#FBCD59;" cx="78" cy="77" r="2"/>

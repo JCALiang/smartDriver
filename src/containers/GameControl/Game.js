@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import Aux from 'react-aux';
 import Board from '../../components/Board/Board';
-import {withRouter, Route} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import axios from 'axios';
-import {Button, Container, Row, Col} from 'reactstrap';
+import {Button,  Row} from 'reactstrap';
 
 
 class game extends Component{
