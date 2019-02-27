@@ -9,6 +9,8 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import {Route, Switch,  BrowserRouter} from 'react-router-dom';
 
 
+import Game from './containers/GameControl/Game'
+
 class App extends Component {
   render() {
     return (
@@ -19,7 +21,7 @@ class App extends Component {
 					 <Route path="/login" component={Login} />
 					 <Route path="/register"  component={Register} />
 	         		 <Route path="/ranking" component={Ranking} />
-	        		<Route path="/"   component={GameTab} />
+	        		<Route path="/"   component={Game} />
 				</Switch>
 	        </Layout>
 	      </div>

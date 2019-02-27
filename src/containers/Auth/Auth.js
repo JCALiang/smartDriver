@@ -1,15 +1,17 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {Container, Form, FormGroup, Label, Input, Button } from 'reactstrap'
 import classes from './Login.css'
 import {Link} from 'react-router-dom'
-import axios from 'axios';
+import axios from 'axios'
+import * as actions from '../../store/actions'
 
 
 class login extends Component{
 	state={
 		username: '',
 		password: '',
+		localUID:''
 	}
 
 
@@ -33,10 +35,11 @@ class login extends Component{
 			.then(response=> {
 				console.log(response.data);
 				console.log('onAuth');
-				this.setState({login:response.data.email});
+				alert('Successfully logged in');
+				this.setState({localUID:response.data.localId});
 				axios.get(retrieveURL+response.data.localId+'.json')
 					.then(response=>{
-						this.props.onAuth(this.state.login, response.data);
+						this.props.onAuth(this.state.localUID, response.data.levels);
 					})
 					.catch(err=>{
 						console.log(err);
@@ -45,8 +48,7 @@ class login extends Component{
 				
 			})
 			.catch(err=>{
-				//alert(err.response.data.error.message);
-				console.log(err);
+				alert(err.response.data.error.message);
 			})
 
 	}
@@ -69,10 +71,15 @@ class login extends Component{
           			onChange={(event, name)=>{this.inputChange(event, name)}}
           			value={this.state.password}/>
         </FormGroup>
-        <Button  color="primary" onClick={this.login} >Login </Button>
         </Form>
-        <br />
-        <br />
+		<div style={{'text-align':'center'}}>
+          			<br /> 
+        <Button  color="primary" onClick={this.register}>Login </Button> </div>
+        
+        <br /> <br /> <br /> 
+       
+
+
 
         <p className={classes.register} > Do not have an account? Register <Link to="/register"> Here! </Link></p>
         </Container>
@@ -84,7 +91,7 @@ class login extends Component{
 
 const mapDispatchToProps = dispatch => {
 	return{
-		onAuth: (user, levels)=> dispatch({type:'login', user:user, levels:levels})
+		onAuth: (user, levels)=> dispatch({type:actions.Login, user:user, levels:levels})
 	};
 }
 

@@ -4,6 +4,8 @@ import Board from '../../components/Board/Board';
 import {withRouter} from 'react-router-dom';
 import axios from 'axios';
 import {Button,  Row} from 'reactstrap';
+import {connect} from 'react-redux';
+import * as actions from '../../store/actions'
 
 
 class game extends Component{
@@ -13,7 +15,8 @@ class game extends Component{
 	}
 
 	componentDidMount(){
-		axios.get('https://smartdriverreact.firebaseio.com/game/'+this.props.match.params.id+'.json')
+		//axios.get('https://smartdriverreact.firebaseio.com/game/'+this.props.match.params.id+'.json')
+		axios.get('https://smartdriverreact.firebaseio.com/game/1.json')
 			.then(resp=>{
 				console.log('mount');
 				this.setState({carPos: resp.data});
@@ -43,10 +46,13 @@ class game extends Component{
 			this.state.carPos.a.pos.botm[0]=== 3 &&
 			this.state.carPos.a.pos.botm[1]=== 5
 		){
-			alert('you win!');
-			this.setState({win:true});
-		}
+			setTimeout(()=>{
+				alert('You Win');
+				this.props.updateLv(this.props.match.params.id);
+			}, 10);
 		
+		}
+	
 	}
 
 	validMove=(car, board)=>{
@@ -116,15 +122,11 @@ class game extends Component{
 	}
 
 	render(){
-		console.log('game props');
-		console.log(this.props.match);
 		return(
 			<Aux>
 			<Row style={{'justify-content':'center'}}>
-			
 			<Board carPos={this.state.carPos} moveCar={this.moveCar} moveValid={this.validMove}/>
 			</Row>
-
 			<Row style={{'justify-content':'center'}}>
 			<Button color="success"
 					style={{'border-radius': '20px', margin:'10px'}} 
@@ -141,5 +143,15 @@ class game extends Component{
 
 }
 
-export default withRouter(game);
+
+
+const mapDispatchToProps = dispatch => {
+	return{
+		updateLv: (level)=> dispatch({type: actions.Update, level: parseInt(level)})
+		// updateLv: (level)=> dispatch({type:actions.Update, level:parseInt(level)})
+	};
+}
+
+
+export default game;
 

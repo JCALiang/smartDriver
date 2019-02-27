@@ -6,9 +6,8 @@ import Car from './Car/Car';
 import classes from './Board.css';
 
 
+
 const renderSquare=(key, carPos, squarePos, move, valid)=> {
-
-
 	let isCarHere= false;
 	let carIndex= null;
 
@@ -39,7 +38,9 @@ const renderSquare=(key, carPos, squarePos, move, valid)=> {
 }
 
 
-export default function Board(props) {
+
+
+const Board=(props)=> {
 	const squares= [];
   const exit=[];
 
@@ -54,12 +55,14 @@ export default function Board(props) {
   }
 
   return (
-  	<Aux>
+      <Aux>
       <div className={classes.board}>
+     
         {squares}
         {exit}
       </div>
-      
-    </Aux>
+      </Aux>
   );
 }
+
+export default Board;

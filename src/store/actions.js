@@ -1,8 +1,5 @@
-import axios from 'axios';
 
-
-const register =()=>{
-	axios.post()
-}
-
+export const Login=  'Login';
+export const Update= 'Update';
+export const Logout= 'Logout';
 

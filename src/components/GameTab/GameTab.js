@@ -3,7 +3,7 @@ import { TabContent, TabPane, Nav, NavItem, NavLink,  Container} from 'reactstra
 import Games from './Games/Games';
 
 
-export default class LevelTab extends Component {
+class LevelTab extends Component {
    state = {
       activeTab: '1'
    };
@@ -21,16 +21,17 @@ export default class LevelTab extends Component {
       
     const navItems=[];
     const tabItems=[];
-    const levels=['Easy', 'Medium', 'Hard'];
+    const levels=['Beginner', 'Intermediate', 'Advanced','Expert'];
     const levelColor={
 
         3: '#ECE2D0',
         1: '#b7d7e8',
-        2: 'pink'
+        4: 'pink',
+        2: '#D5F5E3'
     };
 
     //to populate 3 level tab links
-    for(let i=1; i<4; i++){
+    for(let i=1; i<5; i++){
       navItems.push(
             <NavItem key={i} style={{backgroundColor: levelColor[i]}}>
             <NavLink style={{backgroundColor: levelColor[i]}}
@@ -67,3 +68,8 @@ export default class LevelTab extends Component {
     );
   }
 }
+
+
+
+
+export default LevelTab;

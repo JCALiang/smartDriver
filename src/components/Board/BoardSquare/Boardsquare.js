@@ -53,8 +53,8 @@ const BoardSquare=({ connectDropTarget, isOver, canDrop, children}) =>{
 
         <div className={classes.tile} >
             {children}
-        </div>
-
+        </div
+>
     
       {isOver && canDrop && renderOverlay('green')}
       {isOver && !canDrop && renderOverlay('red')}

@@ -1,11 +1,12 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
+import {Container} from 'reactstrap'
 
 export default class ranking extends Component{
 	render(){
 		return(
-			<div>
-				ranking
-			</div>
+			<Container>
+				<h1>UNDER CONSTRUCTION</h1>
+			</Container>
 		)
 	}
 }

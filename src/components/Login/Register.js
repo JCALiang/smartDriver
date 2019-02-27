@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
-import {Link} from 'react-router-dom'
 import axios from 'axios'
 import {Alert} from 'reactstrap'
 
@@ -8,9 +7,9 @@ export default class register extends Component{
 	state={
 		message: null,
 		aColor: null,
-		username: null,
-		password: null,
-		password2: null
+		username: "",
+		password: "",
+		password2: "",
 	}
 
 	
@@ -31,7 +30,13 @@ export default class register extends Component{
 
 		axios.post('https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyC3_TY8oeL7ROyJK45ZwUponfp4KZDeXKs', data)
 			.then( response => {
-						this.setState({message: 'Success fully registered, please login now!', aColor: 'success'})
+						this.setState({message: 'Success fully registered, please login now!', aColor: 'success'});
+
+						const data={levels:[0]};
+						const setURL= 'https://smartdriverreact.firebaseio.com/user/'+response.data.localId+'.json';
+						axios.patch(setURL, data)
+							.then(response=> console.log(response))
+							.catch(err=> console.log('error'))
 						
 			})
 
@@ -39,7 +44,7 @@ export default class register extends Component{
 				console.log(err.response);
 				this.setState({message:  err.response.data.error.message, aColor:'danger'});
 			});
-
+			
 
 	}
 
@@ -50,7 +55,7 @@ export default class register extends Component{
 	render(){
 
 		const banner= this.state.message ? <Alert color={this.state.aColor}> {this.state.message} </Alert> : null;
-		console.log(banner);
+
 		return(
 			<Container style={{width:"50%"}} >
 			{banner}
@@ -70,12 +75,19 @@ export default class register extends Component{
           			value={this.state.password}/>
           			<br/>
           <Input type="password" name="password2" id="password2" 
- 					placeholder="Please reenter your password"
+ 					placeholder="Please enter your password again here"
           			onChange={(event, name)=>{this.inputChange(event, name)}}
           			value={this.state.password2}/>
-        </FormGroup>
-        <Button  color="primary" onClick={this.register}>Register </Button>
-        </Form>
+          
+         </FormGroup>
+			</Form>
+         <div style={{'text-align':'center'}}>
+          			<br /> <br/> <br/>
+        <Button  color="primary" onClick={this.register}>Register </Button> </div>
+        
+        
+        
+        
         <br />
         <br />
         </Container>

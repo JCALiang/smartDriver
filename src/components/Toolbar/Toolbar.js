@@ -1,4 +1,8 @@
 import React from 'react';
+import * as actions from '../../store/actions'
+import {Link} from 'react-router-dom'
+import {connect} from 'react-redux';
+
 import {
   Collapse,
   Navbar,
@@ -12,8 +16,7 @@ import {
   DropdownMenu,
   DropdownItem } from 'reactstrap';
 
-import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
+
 
 
 class toolbar extends React.Component {
@@ -21,7 +24,7 @@ class toolbar extends React.Component {
       isOpen: false
   };
 
-  toggle() {
+  toggle=()=> {
     this.setState({
       isOpen: !this.state.isOpen
     });
@@ -31,20 +34,20 @@ class toolbar extends React.Component {
 
   render() {
   
-    const log = this.props.username? 'Logout' : 'Login'
+    const log = this.props.username? <NavLink onClick={this.props.logout}>Logout</NavLink> : <NavLink tag={Link} to="/login"> Login</NavLink>;
 
     return (
       <div>
         <Navbar color="dark" dark expand="md">
-          <Link to="/"> Smart Driver </Link> 
+          <NavbarBrand tag={Link} to="/"> Smart Driver </NavbarBrand> 
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <Link to="/ranking"><NavLink to>Ranking</NavLink></Link>
+                <NavLink tag={Link} to="/ranking">Ranking</NavLink>
               </NavItem>
               <NavItem>
-                <Link to="/login"><NavLink>{log}</NavLink></Link>
+                {log}
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
@@ -74,9 +77,14 @@ class toolbar extends React.Component {
 
 const mapStateToProps = state => {
   return{
-    username: state.user
+    username: state.localUID
   }
 }
 
+const mapDispatchToProps = dispatch=>{
+  return{
+    logout: ()=> dispatch({type: actions.Logout})
+  }
+}
 
-export default connect(mapStateToProps)(toolbar);
+export default connect(mapStateToProps, mapDispatchToProps)(toolbar);
