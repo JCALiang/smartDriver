@@ -15,8 +15,7 @@ class game extends Component{
 	}
 
 	componentDidMount(){
-		//axios.get('https://smartdriverreact.firebaseio.com/game/'+this.props.match.params.id+'.json')
-		axios.get('https://smartdriverreact.firebaseio.com/game/1.json')
+		axios.get('https://smartdriverreact.firebaseio.com/game/'+this.props.match.params.id+'.json')
 			.then(resp=>{
 				console.log('mount');
 				this.setState({carPos: resp.data});
@@ -153,5 +152,5 @@ const mapDispatchToProps = dispatch => {
 }
 
 
-export default game;
+export default withRouter(connect(null,mapDispatchToProps)(game));
 

@@ -4,8 +4,7 @@ import * as actions from './actions';
 
 const initialState={
 	localUID:null,
-	levels: [],
-
+	levels: [0],
 }
 
 
@@ -13,6 +12,7 @@ const initialState={
 
 
 const reducer =(state=initialState, action) => {
+	
 	switch (action.type){
 		case actions.Login:
 			console.log(action.levels)
@@ -24,14 +24,20 @@ const reducer =(state=initialState, action) => {
 		};
 
 		case actions.Update: 
+			
 			const newlevels= [...state.levels];
-			if( !state.levels.includes(action.level)){
+			console.log(newlevels);
+
+			if( !newlevels.includes(action.level)){
 				newlevels.push(action.level);
 				const data= {levels: newlevels};
-				console.log(data);
-				axios.patch('https://smartdriverreact.firebaseio.com/user/'+state.localUID+'.json', data)
+
+				if(state.localUID){
+					axios.patch('https://smartdriverreact.firebaseio.com/user/'+state.localUID+'.json', data)
 					.then(response=> console.log(response.data))
 					.catch(err=> console.log(err.response))
+				}
+				
 						
 			}
 
@@ -45,16 +51,19 @@ const reducer =(state=initialState, action) => {
 			return{
 				...state,
 				localUID: null,
-				levels:[]
+				levels:[0]
 			};
 
-		default:
+		default: {
 			return{
-				state
+				...state
 			}
+		}
 		
 	}
-
+	return{
+		...state
+	}
 }
 
 

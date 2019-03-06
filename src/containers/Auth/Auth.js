@@ -74,7 +74,7 @@ class login extends Component{
         </Form>
 		<div style={{'text-align':'center'}}>
           			<br /> 
-        <Button  color="primary" onClick={this.register}>Login </Button> </div>
+        <Button  color="primary" onClick={this.login}>Login </Button> </div>
         
         <br /> <br /> <br /> 
        

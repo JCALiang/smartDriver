@@ -51,15 +51,18 @@ const games=(props)=>{
 	return(
 		<Container>
 				<Switch>
+				
+				
+				<Route path='/level/:id' render={()=>(
+					<Game />
+
+				)} />
+
 				<Route path={props.match.url} exact render={()=>(
 					<Row>{allGames}</Row>
 				)
 				} />
-				
-				<Route path='/level/:id' render={()=>(
-					<Game />
-				)
-				} />
+			
 
 				<Route render={()=><Container> 404: Page Cannot Be Found </Container>}/>
 				</Switch>
